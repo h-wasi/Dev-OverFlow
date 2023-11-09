@@ -20,7 +20,6 @@ function Navbar() {
           <span className="text-primary-500">Overflow</span>
         </p>
       </Link>
-      {/* GlobalSearch */}
       <div className="flex-between gap-5">
         <Theme></Theme>
         <SignedIn>
