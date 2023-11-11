@@ -3,7 +3,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-// import { Button, buttonVariants } from "@/components/ui/button";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { SidebarLink } from "@/constants";
 import { sidebarLinks } from "@/constants/constant";
@@ -26,7 +25,7 @@ function LSidebar() {
                 isActive
                   ? "primary-gradient rounded-lg text-light-900"
                   : "text-dark300_light900"
-              } flex items-center justify-start gap-4 bg-transparent p-4`}
+              } flex items-center justify-start gap-4 bg-transparent p-4 max-lg:justify-center`}
             >
               <Image
                 className={`${isActive ? "" : "invert-colors"}`}
@@ -35,7 +34,11 @@ function LSidebar() {
                 height={20}
                 alt={item.label}
               ></Image>
-              <p className={`${isActive ? "base-bold" : "base-medium "}`}>
+              <p
+                className={`${
+                  isActive ? "base-bold" : "base-medium "
+                } max-lg:hidden`}
+              >
                 {item.label}
               </p>
             </Link>
@@ -43,7 +46,7 @@ function LSidebar() {
             <SignedIn>
               <Link
                 href={item.route}
-                key={item.label}
+                key={item.route}
                 className={`${
                   isActive
                     ? "primary-gradient rounded-lg text-light-900"
@@ -57,7 +60,11 @@ function LSidebar() {
                   height={20}
                   alt={item.label}
                 ></Image>
-                <p className={`${isActive ? "base-bold" : "base-medium "}`}>
+                <p
+                  className={`${
+                    isActive ? "base-bold" : "base-medium "
+                  } max-lg:hidden`}
+                >
                   {item.label}
                 </p>
               </Link>
@@ -70,13 +77,27 @@ function LSidebar() {
         <SignedOut>
           <Link href={"/sign-in"}>
             <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
-              <span className="primary-text-gradient">Log In</span>
+              <Image
+                src={"/assets/icons/account.svg"}
+                alt="login"
+                className="invert-colors lg:hidden"
+                width={20}
+                height={20}
+              ></Image>
+              <span className="primary-text-gradient max-lg:hidden">Log In</span>
             </Button>
           </Link>
 
           <Link href={"/sign-up"}>
             <Button className="small-medium light-border-2 btn-tertiary min-h-[40px] w-full rounded-lg px-4 py-3 shadow-none text-dark400_light900">
-              Sign Up
+              <Image
+                src={"/assets/icons/sign-up.svg"}
+                alt="signup"
+                className="invert-colors lg:hidden"
+                width={20}
+                height={20}
+              ></Image>
+              <span className="max-lg:hidden">Sign Up</span>
             </Button>
           </Link>
         </SignedOut>
