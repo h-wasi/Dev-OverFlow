@@ -46,9 +46,7 @@ function MobileNav() {
             </p>
           </Link>
           <div>
-            {/* <SheetClose> */}
-              <NavContent></NavContent>
-            {/* </SheetClose> */}
+            <NavContent></NavContent>
           </div>
           <SignedOut>
             <div className="flex flex-col gap-3">
@@ -76,6 +74,7 @@ function MobileNav() {
 
 function NavContent() {
   const pathname = usePathname();
+
   return (
     <section className="flex flex-col h-full gap-6 pt-16">
       {sidebarLinks.map((item) => {
