@@ -25,7 +25,7 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: "DevFlow",
+  title: "Dev OverFlow",
   description: "A community driven platform",
   icons: {
     icon: "/assets/images/site-logo.svg",
