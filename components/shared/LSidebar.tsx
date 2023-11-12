@@ -13,14 +13,14 @@ function LSidebar() {
   return (
     <section className="custom-scrollbar background-light900_dark200 light-border sticky left-0 top-0 flex h-screen w-fit flex-col justify-between  overflow-y-auto border-r p-6 pt-36 shadow-light-300 dark:shadow-none max-sm:hidden lg:w-[266px]">
       <div className="flex flex-col justify-center gap-4">
-        {sidebarLinks.map((item) => {
+        {sidebarLinks.map((item, i) => {
           const isActive =
             (pathname.includes(item.route) && item.route.length > 1) ||
             pathname === item.route;
           return item.label !== "Profile" ? (
             <Link
               href={item.route}
-              key={item.label}
+              key={i}
               className={`${
                 isActive
                   ? "primary-gradient rounded-lg text-light-900"
@@ -43,10 +43,10 @@ function LSidebar() {
               </p>
             </Link>
           ) : (
-            <SignedIn>
+            <SignedIn key={i}>
               <Link
+                key={crypto.randomUUID()}
                 href={item.route}
-                key={item.route}
                 className={`${
                   isActive
                     ? "primary-gradient rounded-lg text-light-900"
@@ -84,7 +84,9 @@ function LSidebar() {
                 width={20}
                 height={20}
               ></Image>
-              <span className="primary-text-gradient max-lg:hidden">Log In</span>
+              <span className="primary-text-gradient max-lg:hidden">
+                Log In
+              </span>
             </Button>
           </Link>
 
