@@ -32,17 +32,6 @@ export default function Home() {
             containerClasses={"hidden max-md:flex"}
           />
           <HomePageFilter />
-          {/* {Filters.map((f, i) => (
-            <>
-              <Button
-                className="py-3 max-md:hidden mt-3 text-light-500 capitalize px-4 background-light800_darkgradient"
-                key={f._id}
-              >
-                {f.name}
-              </Button>
-            </>
-          ))}
-          */}
         </div>
       </div>
     </>

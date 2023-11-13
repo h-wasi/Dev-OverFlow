@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/select";
 
 interface Props {
-  filters: [{ name: string; value: string }];
+  filters: { name: string; value: string }[];
   otherClasses?: string;
   containerClasses?: string;
 }
