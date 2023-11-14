@@ -1,8 +1,13 @@
+
+import Questions from "@/components/shared/forms/Questions";
 import React from "react";
-import { UserButton } from "@clerk/nextjs";
 
 function page() {
-  return <div>Ask a Question</div>;
+  return (
+    <div className="mt-9">
+      <Questions />
+    </div>
+  );
 }
 
 export default page;
