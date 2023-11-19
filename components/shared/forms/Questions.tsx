@@ -63,7 +63,7 @@ function Questions() {
     setIsSubmitting(true);
     // add request functionality
     try {
-      //make async call---> create question ----------a call that contain all form data
+      //make async call---> create question ---------a call that contain all form data
       //navigate to homepage
     } catch (err) {
     } finally {
