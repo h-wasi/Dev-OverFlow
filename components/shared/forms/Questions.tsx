@@ -19,6 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { QuestionsSchema } from "@/lib/validation";
 import Image from "next/image";
+import { createQuestion } from "@/lib/actions/question.action";
 
 const type: any = "create";
 
@@ -59,10 +60,11 @@ function Questions() {
     const newTag = field.value.filter((t: string) => t !== tag);
     form.setValue("tags", newTag);
   }
-  function onSubmit(values: z.infer<typeof QuestionsSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
     // add request functionality
     try {
+      await createQuestion({});
       //make async call---> create question ---------a call that contain all form data
       //navigate to homepage
     } catch (err) {
@@ -110,10 +112,6 @@ function Questions() {
                   <span className="text-primary-500">*</span>
                 </FormLabel>
                 <FormControl className="mt-3.5">
-                  {/* <Input
-                    {...field}
-                    className="no-focus paragraph-regular background-light800_dark300 light-border-2 min-h-[56px] border"
-                  /> */}
                   <>
                     <Editor
                       apiKey={
@@ -123,6 +121,8 @@ function Questions() {
                         //@ts-ignore
                         editorRef.current = editor;
                       }}
+                      onBlur={field.onBlur}
+                      onEditorChange={(content) => field.onChange(content)}
                       initialValue=""
                       init={{
                         height: 350,
