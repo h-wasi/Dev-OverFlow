@@ -64,7 +64,11 @@ function Questions() {
     setIsSubmitting(true);
     // add request functionality
     try {
-      await createQuestion({});
+      await createQuestion({
+        title: values.title,
+        tags: values.tags,
+        content: values.explanation,
+      });
       //make async call---> create question ---------a call that contain all form data
       //navigate to homepage
     } catch (err) {
