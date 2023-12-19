@@ -6,9 +6,10 @@ import React from "react";
 
 async function page() {
   // const { userId } = auth();
-  const userId = "123456789";
+  const userId = "1234567890";
   // if (!userId) redirect("/sign-in");
-  const mongoUser = await getUserById({ userId });
+  const mongoUser = await getUserById(userId);
+  //const mongoUser = await getUserById({ userId }); replace above line with it when using MongoDB real data
   console.log(mongoUser);
 
   return (
