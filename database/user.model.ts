@@ -1,5 +1,4 @@
 import { Schema, models, model, Document } from "mongoose";
-import { string } from "zod";
 
 export interface IUser extends Document {
   clerkId: string;

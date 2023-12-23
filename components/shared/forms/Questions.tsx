@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Badge } from "@/components/ui/badge";
+import { useRouter, usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -22,10 +23,17 @@ import Image from "next/image";
 import { createQuestion } from "@/lib/actions/question.action";
 
 const type: any = "create";
+interface Props {
+  mongoUserId: string;
+}
 
-function Questions() {
+function Questions({ mongoUserId }: Props) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const editorRef = useRef(null);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  //define form
   const form = useForm<z.infer<typeof QuestionsSchema>>({
     resolver: zodResolver(QuestionsSchema),
     defaultValues: {
@@ -63,14 +71,16 @@ function Questions() {
   async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
     // add request functionality
+    //make async call---> create question ---------a call that contain all form data
     try {
       await createQuestion({
         title: values.title,
         tags: values.tags,
         content: values.explanation,
+        author: JSON.parse(mongoUserId),
       });
-      //make async call---> create question ---------a call that contain all form data
       //navigate to homepage
+      router.push("/");
     } catch (err) {
     } finally {
       setIsSubmitting(false);
@@ -78,7 +88,6 @@ function Questions() {
   }
   return (
     <div>
-      <h1 className="h1-bold text-dark100_light900 mb-6">Ask a Question</h1>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
