@@ -13,15 +13,31 @@ export async function createQuestion(params: any) {
       content,
       author,
     });
-    const tagDocuments = [];
-    for (const tag of tags) {
-      const existintTag = await Tag.findOneAndUpdate(
+    // const tagDocuments = [];
+    // for (const tag of tags) {
+    //   const existintTag = await Tag.findOneAndUpdate(
+    //     { name: { $regex: new RegExp(`^${tag}$`, "i") } },
+    //     { $setOnInsert: { name: tag }, $push: { question: question._id } },
+    //     { upsert: true }
+    //   );
+    //   tagDocuments.push(existintTag._id);
+    // }
+    // await Question.findByIdAndUpdate(question._id, {
+    //   $push: { tags: { $each: tagDocuments } },
+    // });
+    //temp solution
+    const tagPromises = tags.map(async (tag: string) => {
+      const existingTag = await Tag.findOneAndUpdate(
         { name: { $regex: new RegExp(`^${tag}$`, "i") } },
-        { $setOnInsert: { name: tag }, $push: { question: question._id } },
-        { upsert: true }
+        {
+          $setOnInsert: { name: tag },
+          $push: { question: question._id },
+        },
+        { upsert: true, new: true }
       );
-      tagDocuments.push(existintTag._id);
-    }
+      return existingTag._id;
+    });
+    const tagDocuments = await Promise.all(tagPromises);
     await Question.findByIdAndUpdate(question._id, {
       $push: { tags: { $each: tagDocuments } },
     });

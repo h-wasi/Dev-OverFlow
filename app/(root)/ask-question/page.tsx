@@ -13,8 +13,7 @@ async function page() {
   return (
     <div className="mt-9">
       <h1 className="h1-bold text-dark100_light900 mb-6">Ask a Question</h1>
-      <Questions />
-      {/* <Questions mongoUserId={JSON.stringify(mongoUser._id)} /> */}
+      <Questions mongoUserId={JSON.stringify(mongoUser._id)} />
     </div>
   );
 }
