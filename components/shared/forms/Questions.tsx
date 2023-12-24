@@ -78,6 +78,7 @@ function Questions({ mongoUserId }: Props) {
         tags: values.tags,
         content: values.explanation,
         author: JSON.parse(mongoUserId),
+        path: pathname,
       });
       //navigate to homepage
       router.push("/");
