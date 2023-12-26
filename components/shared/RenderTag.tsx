@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { badgeVariants } from "@/components/ui/badge";
 
 interface Props {
-  _id: string;
+  _id: number;
   name: string;
   nums?: number;
   showCount?: boolean;
