@@ -1,7 +1,7 @@
 import Questions from "@/components/shared/forms/Questions";
 import { getUserById } from "@/lib/actions/user.action";
 import { auth } from "@clerk/nextjs";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 import { json } from "node:stream/consumers";
 import React from "react";
 
