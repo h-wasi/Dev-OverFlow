@@ -1,4 +1,4 @@
-"use server";
+// "use server";
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { WebhookEvent } from "@clerk/nextjs/server";
@@ -63,8 +63,8 @@ export async function POST(req: Request) {
     //TODO:   create a new user in database
     const mongoUser = await createUser({
       clerkId: id,
-      // name: `${first_name}${last_name ? `${last_name}` : ""}`,
-      name: `${first_name}`,
+      name: `${first_name}${last_name ? ` ${last_name}` : ""}`,
+      // name: `${first_name}`,
       username: username!,
       email: email_addresses[0].email_address,
       picture: image_url,
