@@ -9,12 +9,14 @@ import NoResult from "@/components/shared/NoResult";
 import QuestionCards from "@/components/shared/cards/QuestionCards";
 import { getQuestions } from "@/lib/actions/question.action";
 
+async function getAll() {
+  "use server";
+  const res = await getQuestions({});
+  return res;
+}
+
 export default async function Home() {
-  const result = await (async () => {
-    "use server";
-    const res = await getQuestions({});
-    return res;
-  })();
+  const result = await getAll();
 
   return (
     <>
