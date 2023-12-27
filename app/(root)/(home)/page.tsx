@@ -10,7 +10,6 @@ import QuestionCards from "@/components/shared/cards/QuestionCards";
 import { getQuestions } from "@/lib/actions/question.action";
 
 export default async function Home() {
-  "use server";
   const result = await getQuestions({});
 
   return (
@@ -24,14 +23,14 @@ export default async function Home() {
         </Link>
       </div>
       <div className="mt-11 flex gap-5 max-sm:flex-col sm:items-center md:items-start md:flex-col">
-        <LocalSearch
+        {/* <LocalSearch
           imgSrc={"/assets/icons/search.svg"}
           placeholder="Search for questions"
           route="/"
           iconPosition="left"
           otherClasses="flex-1"
-        />
-        <Filter
+        /> */}
+        {/* <Filter
           filters={HomePageFilters}
           otherClasses={"min-h-[56px] sm:min-w-[70px]"}
           containerClasses={"hidden max-md:flex"}
@@ -62,7 +61,7 @@ export default async function Home() {
             link="/ask-question"
             linkQuest="Ask a Question"
           />
-        )}
+        )} */}
       </div>
     </>
   );
