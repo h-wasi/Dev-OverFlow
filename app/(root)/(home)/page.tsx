@@ -8,15 +8,15 @@ import HomePageFilter from "@/components/shared/HomeFilters";
 import NoResult from "@/components/shared/NoResult";
 import QuestionCards from "@/components/shared/cards/QuestionCards";
 import { getQuestions } from "@/lib/actions/question.action";
+import result from "postcss/lib/result";
 
 async function getAll() {
   "use server";
-  return await getQuestions({});
+  const result = await getQuestions({});
+  return result;
 }
-
 export default async function Home() {
   const result = await getAll();
-
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
