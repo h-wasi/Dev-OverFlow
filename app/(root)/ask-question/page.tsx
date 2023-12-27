@@ -6,9 +6,9 @@ import { json } from "node:stream/consumers";
 import React from "react";
 
 async function page() {
-  const userId = "123456789";
+  // const userId = "123456789";
   // replace above line with it when using MongoDB real data
-  // const { userId } = auth();
+  const { userId } = auth();
   if (!userId) redirect("/sign-in");
   const mongoUser = await getUserById({ userId });
   return (
