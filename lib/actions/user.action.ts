@@ -2,7 +2,6 @@
 import User from "@/database/user.model";
 import Question from "@/database/question.model";
 import { connectionToDatabase } from "../mongoose";
-import error from "next/error";
 import {
   CreateUserParams,
   DeleteUserParams,
@@ -31,6 +30,7 @@ export async function createUser(userData: CreateUserParams) {
   try {
     connectionToDatabase();
     const newUser = await User.create(userData);
+    return newUser;
   } catch (error) {
     console.log(error);
     throw error;

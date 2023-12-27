@@ -1,3 +1,4 @@
+// "use server";
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { WebhookEvent } from "@clerk/nextjs/server";
@@ -62,7 +63,8 @@ export async function POST(req: Request) {
     //TODO:   create a new user in database
     const mongoUser = await createUser({
       clerkId: id,
-      name: `${first_name}${last_name ? `${last_name}` : ""}`,
+      // name: `${first_name}${last_name ? `${last_name}` : ""}`,
+      name: `${first_name}`,
       username: username!,
       email: email_addresses[0].email_address,
       picture: image_url,
@@ -88,9 +90,11 @@ export async function POST(req: Request) {
   if (eventType === "user.deleted") {
     const { id } = evt.data;
     const deletedUser = await deleteUser({ clerkId: id! });
-    console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
     return NextResponse.json({ menubar: "ok", user: deletedUser });
   }
+  console.log(evt.data);
+
+  // console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
   // console.log("Webhook body:", body);
 
   return new Response("", { status: 200 });
