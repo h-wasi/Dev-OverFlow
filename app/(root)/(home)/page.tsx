@@ -10,6 +10,7 @@ import QuestionCards from "@/components/shared/cards/QuestionCards";
 import { getQuestions } from "@/lib/actions/question.action";
 
 export default async function Home() {
+  "use server";
   const result = await getQuestions({});
 
   return (
