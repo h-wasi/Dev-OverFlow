@@ -11,8 +11,7 @@ import { getQuestions } from "@/lib/actions/question.action";
 
 async function getAll() {
   "use server";
-  const res = await getQuestions({});
-  return res;
+  return await getQuestions({});
 }
 
 export default async function Home() {

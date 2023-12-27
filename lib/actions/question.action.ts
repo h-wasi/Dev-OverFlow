@@ -8,8 +8,6 @@ import { revalidatePath } from "next/cache";
 import path from "path";
 
 export async function getQuestions(params: GetQuestionsParams) {
-  "use server";
-
   try {
     connectionToDatabase();
     const questions = await Question.find({})
