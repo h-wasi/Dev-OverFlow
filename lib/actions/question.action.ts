@@ -1,4 +1,4 @@
-// "use server";
+"use server";
 import Tag from "@/database/tag.model";
 import User from "@/database/user.model";
 import Question from "@/database/question.model";
