@@ -41,21 +41,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // <ClerkProvider
-    //   appearance={{
-    //     elements: {
-    //       formButtonPrimary: "primary-gradient",
-    //       footerActionLink: "primary-text-gradient hover:text-primary500",
-    //     },
-    //   }}
-    // >
+    <ClerkProvider
+      appearance={{
+        elements: {
+          formButtonPrimary: "primary-gradient",
+          footerActionLink: "primary-text-gradient hover:text-primary500",
+        },
+      }}
+    >
       <html lang="en">
         <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-          {/* <ThemeProvider> */}
-            {children}
-            {/* </ThemeProvider> */}
+          <ThemeProvider>{children}</ThemeProvider>
         </body>
       </html>
-    // </ClerkProvider>
+    </ClerkProvider>
   );
 }
