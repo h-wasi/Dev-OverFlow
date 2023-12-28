@@ -9,47 +9,8 @@ import NoResult from "@/components/shared/NoResult";
 import QuestionCards from "@/components/shared/cards/QuestionCards";
 import { getQuestions } from "@/lib/actions/question.action";
 
-const questions = [
-  {
-    _id: "1",
-    title: "Cascading Deletes in SQLAlchemy?",
-    tags: [
-      { _id: "1", name: "python" },
-      { _id: "2", name: "sql" },
-    ],
-    author: {
-      _id: "1",
-      name: "John Doe",
-      picture:
-        "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5",
-    },
-    upvotes: 101506,
-    views: 1000007,
-    answers: [],
-    createdAt: new Date("2022-12-01T12:00:00.000Z"),
-  },
-  {
-    _id: "2",
-    title: "How to center a div?",
-    tags: [
-      { _id: "3", name: "html" },
-      { _id: "4", name: "css" },
-    ],
-    author: {
-      _id: "2",
-      name: "Jane Smith",
-      picture:
-        "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5",
-    },
-    upvotes: 35001,
-    views: 150000002,
-    answers: [],
-    createdAt: new Date("2023-09-02T10:30:00.000Z"),
-  },
-];
-
 export default async function Home() {
-  // const result = await getQuestions({});
+  const result = await getQuestions({});
 
   return (
     <>
@@ -77,8 +38,8 @@ export default async function Home() {
         <HomePageFilter />
       </div>
       <div className="mt-10 flex flex-col w-full">
-        {questions.length > 0 ? (
-          questions.map((question) => (
+        {result.questions.length > 0 ? (
+          result.questions.map((question) => (
             <QuestionCards
               key={question._id}
               title={question.title}
