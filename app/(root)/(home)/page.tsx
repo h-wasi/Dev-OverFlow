@@ -8,13 +8,14 @@ import HomePageFilter from "@/components/shared/HomeFilters";
 import NoResult from "@/components/shared/NoResult";
 import QuestionCards from "@/components/shared/cards/QuestionCards";
 import { getQuestions } from "@/lib/actions/question.action";
+import result from "postcss/lib/result";
 
 export default async function Home() {
-  const result = await getQuestions({});
+  // const result = await getQuestions({});
 
   return (
     <>
-      {/* <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
+      <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
         <h1 className="h1-bold text-dark100_light900">All Questions</h1>
         <Link href={"/ask-question"} className="flex justify-end max-sm:w-full">
           <Button className="primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
@@ -38,7 +39,7 @@ export default async function Home() {
         <HomePageFilter />
       </div>
       <div className="mt-10 flex flex-col w-full">
-        {result.questions.length > 0 ? (
+        {result?.questions.length > 0 ? (
           result.questions.map((question) => (
             <QuestionCards
               key={question._id}
@@ -62,7 +63,7 @@ export default async function Home() {
             linkQuest="Ask a Question"
           />
         )}
-      </div> */}
+      </div>
     </>
   );
 }
