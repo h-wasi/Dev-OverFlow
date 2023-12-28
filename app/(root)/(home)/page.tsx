@@ -12,7 +12,7 @@ import result from "postcss/lib/result";
 
 export default async function Home() {
   // const result = await getQuestions({});
-
+  const result: any[] = [];
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -39,7 +39,7 @@ export default async function Home() {
         <HomePageFilter />
       </div>
       <div className="mt-10 flex flex-col w-full">
-        {result?.questions.length > 0 ? (
+        {result.questions.length > 0 ? (
           result.questions.map((question) => (
             <QuestionCards
               key={question._id}
