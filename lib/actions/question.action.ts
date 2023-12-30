@@ -2,14 +2,14 @@
 import Tag from "@/database/tag.model";
 import User from "@/database/user.model";
 import Question from "@/database/question.model";
-import { connectionToDatabase } from "../mongoose";
+import { connectToDatabase } from "../mongoose";
 import { CreateQuestionParams, GetQuestionsParams } from "./shared.types";
 import { revalidatePath } from "next/cache";
 import path from "path";
 
 export async function getQuestions(params: GetQuestionsParams) {
   try {
-    connectionToDatabase();
+    connectToDatabase();
     const questions = await Question.find({})
       .populate({
         path: "tags",
@@ -26,7 +26,7 @@ export async function getQuestions(params: GetQuestionsParams) {
 
 export async function createQuestion(params: CreateQuestionParams) {
   try {
-    connectionToDatabase();
+    connectToDatabase();
     const { title, content, tags, author, path } = params;
     const question = await Question.create({
       title,

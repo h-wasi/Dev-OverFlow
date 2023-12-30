@@ -20,7 +20,7 @@ function Filter({ filters, containerClasses, otherClasses }: Props) {
     <div className={`relative ${containerClasses}`}>
       <Select>
         <SelectTrigger
-          className={`${otherClasses} min-w-[180px] body-regular light-border background-light800_dark300 w-full text-dark400_light500 border px-5 py-2.5`}
+          className={`${otherClasses} min-w-[180px] body-regular light-border background-light800_dark300 w-full text-dark400_light500 border no-focus px-5 py-2.5`}
         >
           <SelectValue placeholder="Select a Filter" />
         </SelectTrigger>
@@ -30,7 +30,7 @@ function Filter({ filters, containerClasses, otherClasses }: Props) {
               <SelectItem
                 value={f.value}
                 key={f.value}
-                className="py-3 text-light-500 capitalize px-8 background-light800_darkgradient"
+                className="py-3 text-light500 capitalize px-8 background-light800_darkgradient"
               >
                 {f.name}
               </SelectItem>

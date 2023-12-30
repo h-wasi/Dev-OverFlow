@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 let isconnected: boolean = false;
 
-export const connectionToDatabase = async () => {
+export const connectToDatabase = async () => {
   mongoose.set("strictQuery", true);
   if (!process.env.MONGODB_URL) return console.log("Missing MONGODB_URL");
   if (isconnected) {

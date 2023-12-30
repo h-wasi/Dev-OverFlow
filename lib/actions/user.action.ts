@@ -1,7 +1,7 @@
 "use server";
 import User from "@/database/user.model";
 import Question from "@/database/question.model";
-import { connectionToDatabase } from "../mongoose";
+import { connectToDatabase } from "../mongoose";
 import {
   CreateUserParams,
   DeleteUserParams,
@@ -12,7 +12,7 @@ import { revalidatePath } from "next/cache";
 
 export async function getUserById(params: any) {
   try {
-    connectionToDatabase();
+    connectToDatabase();
     const { userId } = params;
     const user = await User.findOne({
       clerkId: userId,
@@ -28,7 +28,7 @@ export async function getUserById(params: any) {
 }
 export async function getAllUsers() {
   try {
-    connectionToDatabase();
+    connectToDatabase();
     // const { page = 1, pageSize = 20, filter, searchQuery } = params;
     const users = await User.find({}).sort({ createdAt: -1 });
     return { users };
@@ -40,7 +40,7 @@ export async function getAllUsers() {
 
 export async function createUser(userData: CreateUserParams) {
   try {
-    connectionToDatabase();
+    connectToDatabase();
     const newUser = await User.create(userData);
     return newUser;
   } catch (error) {
@@ -50,7 +50,7 @@ export async function createUser(userData: CreateUserParams) {
 }
 export async function updateUser(params: UpdateUserParams) {
   try {
-    connectionToDatabase();
+    connectToDatabase();
     const { clerkId, updateData, path } = params;
     await User.findOneAndUpdate({ clerkId }, updateData, { new: true });
     revalidatePath(path);
@@ -61,7 +61,7 @@ export async function updateUser(params: UpdateUserParams) {
 }
 export async function deleteUser(params: DeleteUserParams) {
   try {
-    connectionToDatabase();
+    connectToDatabase();
     const { clerkId } = params;
     const user = await User.findOneAndDelete({ clerkId });
     if (!User) {

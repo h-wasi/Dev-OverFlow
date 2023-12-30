@@ -1,11 +1,14 @@
+import { Badge } from "@/components/ui/badge";
 import getTopInteractedTags from "@/lib/actions/tag.actions";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import RenderTag from "../RenderTag";
 
 interface props {
   user: {
     _id: string;
+
     clerkId: string;
     name: string;
     username: string;
@@ -33,6 +36,21 @@ async function UserCard({ user }: props) {
             @{user.name}
           </h3>
           <p className="body-regular text-dark500_light500 mt-2">{user.name}</p>
+        </div>
+        <div className="mt-5">
+          {interactedTags && interactedTags.length > 0 ? (
+            <div className="flex items-center gap-2">
+              {interactedTags.map((tag) => (
+                <RenderTag
+                  key={tag._id}
+                  _id={tag._id}
+                  name={tag.name}
+                ></RenderTag>
+              ))}
+            </div>
+          ) : (
+            <Badge>No tags yet</Badge>
+          )}
         </div>
       </article>
     </Link>
