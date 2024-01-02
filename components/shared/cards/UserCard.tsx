@@ -8,7 +8,6 @@ import RenderTag from "../RenderTag";
 interface props {
   user: {
     _id: string;
-
     clerkId: string;
     name: string;
     username: string;
